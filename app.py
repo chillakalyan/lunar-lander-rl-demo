@@ -76,9 +76,10 @@ def fly(agent_name, seed, noise_sigma, max_steps):
             total_reward += float(reward)
             last_reward = float(reward)
             steps += 1
-            frame = env.render()
-            if frame is not None:
-                frames.append(frame)
+            if steps % 4 == 0 or terminated or truncated:
+                frame = env.render()
+                if frame is not None:
+                    frames.append(frame)
     finally:
         env.close()
 
