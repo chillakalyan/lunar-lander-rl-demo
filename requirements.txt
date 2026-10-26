@@ -4,3 +4,7 @@ gymnasium[box2d]
 imageio[ffmpeg]
 numpy
 tabulate
+streamlit
+matplotlib
+pandas
+
