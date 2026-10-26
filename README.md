@@ -1,16 +1,23 @@
 # LunarLander RL Lab
 
-An interactive Deep Reinforcement Learning application featuring **DQN (Deep Q-Network)** and **REINFORCE** agents trained on Gymnasium's `LunarLander-v3` environment. Built with Python, PyTorch, and Streamlit, this project provides an interface to explore trained agents and examine their evaluation results.
+An interactive Deep Reinforcement Learning application featuring **DQN (Deep Q-Network)** and **REINFORCE** agents trained on Gymnasium's `LunarLander-v3` environment. Built with Python, PyTorch, and Streamlit, this project allows users to explore trained reinforcement learning agents, run simulations, and examine evaluation results.
+
+## Live Demo
+
+**[Launch LunarLander RL Lab](https://lunar-lander-rl-lab-ocesbugdun9mfrzvpf5eak.streamlit.app/)**
+
+Explore the deployed application to interact with the trained agents and visualize their performance.
 
 ## Features
 
-- **DQN agent:** Explore a trained value-based reinforcement learning policy.
-- **REINFORCE agent:** Explore a policy-gradient reinforcement learning approach.
-- **Interactive web interface:** Built with Streamlit.
-- **Pretrained checkpoints:** Load the saved DQN and REINFORCE models.
-- **Evaluation reports:** Review CSV files containing model evaluation results.
-- **Recorded demonstrations:** Watch the saved agent evaluation videos.
-- **Free deployment option:** Host the application on Streamlit Community Cloud.
+- **DQN Agent:** Explore a trained value-based reinforcement learning policy.
+- **REINFORCE Agent:** Explore a policy-gradient reinforcement learning approach.
+- **Interactive Dashboard:** Use the Streamlit interface to run simulations and explore evaluation results.
+- **Pretrained Models:** Load saved DQN and REINFORCE checkpoints.
+- **Model Comparison:** Examine evaluation results for both agents.
+- **Training History:** Visualize available training metrics.
+- **Recorded Demonstrations:** Watch saved agent evaluation videos.
+- **Cloud Deployment:** Access the application through Streamlit Community Cloud.
 
 ## Tech Stack
 
@@ -19,12 +26,15 @@ An interactive Deep Reinforcement Learning application featuring **DQN (Deep Q-N
 - Gymnasium
 - Box2D
 - Streamlit
-- NumPy and Pandas
+- NumPy
+- Pandas
+- Matplotlib
 
 ## Project Structure
 
 ```text
-lunar-lander-rl-demo/
+lunar-lander-rl-lab/
+├── streamlit_app.py
 ├── app.py
 ├── run_models.py
 ├── dqn_lander.pt
@@ -42,16 +52,18 @@ lunar-lander-rl-demo/
     └── reinforce_lander.mp4
 ```
 
+*Note: The listed results files should be present in the repository for the corresponding evaluation and video features to work. The application entry point for the deployed Streamlit dashboard is `streamlit_app.py`.*
+
 ## Run Locally
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/chillakalyan/lunar-lander-rl-demo.git
-cd lunar-lander-rl-demo
+git clone https://github.com/chillakalyan/lunar-lander-rl-lab.git
+cd lunar-lander-rl-lab
 ```
 
-### 2. Create a virtual environment
+### 2. Create and activate a virtual environment
 
 Windows PowerShell:
 
@@ -67,29 +79,29 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Ensure the Box2D dependencies required by Gymnasium's LunarLander environment are installed.
+Ensure that the dependencies required by Gymnasium's LunarLander environment, including Box2D, are installed.
 
-### 4. Launch the Streamlit application
+### 4. Launch the Streamlit dashboard
 
 ```bash
-streamlit run app.py
+python -m streamlit run streamlit_app.py
 ```
 
-Streamlit will print a local URL in the terminal. Open that URL in your browser to use the application.
+Open the local URL printed in the terminal to access the application.
 
 ## Evaluate the Trained Agents
 
-Run the evaluation script:
+To run the project's evaluation script:
 
 ```bash
 python run_models.py
 ```
 
-The script runs the evaluations configured in the project and saves the resulting reports and recordings in the `results/` directory. Check `run_models.py` for the evaluation settings and supported options.
+The script's actual evaluation settings determine which agents are evaluated and which reports or recordings are generated. Review `run_models.py` before running it, particularly if you want to reproduce the reported results.
 
 ## Evaluation Results
 
-The `results/` directory contains the following artifacts:
+The `results/` directory can contain the following evaluation artifacts:
 
 | File | Description |
 |---|---|
@@ -97,39 +109,50 @@ The `results/` directory contains the following artifacts:
 | `dqn_evaluation.csv` | DQN evaluation data |
 | `reinforce_evaluation.csv` | REINFORCE evaluation data |
 | `summary.csv` | Summary of evaluation results |
-| `dqn_lander.mp4` | Recorded DQN evaluation |
-| `reinforce_lander.mp4` | Recorded REINFORCE evaluation |
+| `dqn_lander.mp4` | Recorded DQN demonstration |
+| `reinforce_lander.mp4` | Recorded REINFORCE demonstration |
 
-Use these results to compare the agents under the recorded evaluation conditions. Performance can vary depending on the environment configuration, random seeds, and evaluation procedure.
+These artifacts help compare the agents under the configured evaluation conditions. Results may vary with random seeds, environment settings, and evaluation procedures.
 
-## Deploy for Free with Streamlit Community Cloud
+## Deployment with Streamlit Community Cloud
 
-1. Push the application code and required files to your GitHub repository.
+The application is deployed using Streamlit Community Cloud.
+
+**Live application:** [LunarLander RL Lab](https://lunar-lander-rl-lab-ocesbugdun9mfrzvpf5eak.streamlit.app/)
+
+To deploy your own instance:
+
+1. Push the application code and required files to GitHub.
 2. Visit [Streamlit Community Cloud](https://share.streamlit.io/).
-3. Sign in using your GitHub account and authorize access to the repository.
-4. Create a new app and select `chillakalyan/lunar-lander-rl-demo`.
-5. Set the branch to `main` and the main file path to `app.py`.
-6. Deploy the application and wait for the build to complete.
-7. Open the generated public URL and add it to this README.
+3. Sign in using your GitHub account.
+4. Create a new application and select `chillakalyan/lunar-lander-rl-lab`.
+5. Select the `main` branch.
+6. Set the main file path to `streamlit_app.py`.
+7. Deploy and wait for the application to build.
 
-**Deployment considerations:**
-- Ensure `requirements.txt` includes Streamlit and all Python packages imported by the app.
-- Check whether additional operating-system dependencies are needed for Box2D.
-- Include the trained model checkpoints if the app loads them at runtime.
-- Keep resource limits in mind when running simulations or loading PyTorch models on free hosting.
-- Do not commit API keys, credentials, or virtual-environment folders.
+### Deployment considerations
 
-## Important Note
+- Include Streamlit and the application's required Python packages in `requirements.txt`.
+- Configure system dependencies for Box2D in `packages.txt` if needed.
+- Ensure that required model checkpoints are available at runtime.
+- Include the evaluation data and demonstration videos required by the interface.
+- Consider the memory, CPU, and execution-time limits of free hosting.
+- Never commit virtual environments, secrets, or credentials.
 
-This project uses Gymnasium's actual `LunarLander-v3` environment for its reinforcement learning experiments. If you compare it with a separate HTML browser demo that uses a simplified JavaScript simulator, their scores are not directly comparable because the environments and dynamics differ.
+## Reinforcement Learning Environment
+
+This project uses Gymnasium's `LunarLander-v3` environment for its reinforcement learning experiments. DQN and REINFORCE represent different approaches to learning a policy.
+
+Results from this environment should not be directly compared with results from simplified browser-based LunarLander simulations unless their environment dynamics, observation spaces, rewards, and evaluation procedures are equivalent.
 
 ## License
 
-See the [LICENSE](LICENSE) file for licensing information.
+See [LICENSE](LICENSE) for licensing information.
 
 ## Author
 
 **Chilla Kalyan Sai Kumar Reddy**
 
-- GitHub: [@chillakalyan](https://github.com/chillakalyan)
-- Project repository: [LunarLander RL Lab](https://github.com/chillakalyan/lunar-lander-rl-demo)
+- **GitHub:** [@chillakalyan](https://github.com/chillakalyan)
+- **Repository:** [LunarLander RL Lab](https://github.com/chillakalyan/lunar-lander-rl-lab)
+- **Live Demo:** [Open the application](https://lunar-lander-rl-lab-ocesbugdun9mfrzvpf5eak.streamlit.app/)
