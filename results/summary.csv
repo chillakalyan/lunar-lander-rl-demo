@@ -1,0 +1,3 @@
+agent,episodes,mean_reward,std_reward,mean_steps,success_proxy_rate_percent,csv_file
+DQN,100,214.03387540180836,77.53362035866363,475.23,87.0,D:\Downloads\lunar_lander_gradio_app\results\dqn_evaluation.csv
+REINFORCE,100,106.89933379594252,50.91329172050564,888.17,8.0,D:\Downloads\lunar_lander_gradio_app\results\reinforce_evaluation.csv
