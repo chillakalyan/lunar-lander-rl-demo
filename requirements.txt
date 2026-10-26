@@ -7,4 +7,3 @@ tabulate
 streamlit
 matplotlib
 pandas
-
